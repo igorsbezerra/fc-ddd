@@ -46,4 +46,28 @@ describe("Customer unit tests", () => {
       customer.activate();
     }).toThrowError("Address is mandatory to activate a customer");
   });
+
+  it("should rewards is initialized", () => {
+    const customer = new Customer("1", "Customer 1");
+
+    expect(customer.rewardPoints).toBe(0);
+  });
+
+  it("should add reward points", () => {
+    const customer = new Customer("1", "Customer 1");
+
+    customer.addRewardPoints(10);
+
+    expect(customer.rewardPoints).toBe(10);
+  });
+
+  it("should add multiplos reward points", () => {
+    const customer = new Customer("1", "Customer 1");
+
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(10);
+
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(20);
+  });
 });
